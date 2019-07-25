@@ -137,4 +137,6 @@ This document is created within the **MSCA CAlCULUS** project.
 *The views and opinions expressed herein do not necessarily reflect those of the European Commission.*
 
 
-<div align="right">[**Back to top**](#selection-of-departure-times)</div>
+<p align="right">
+[**Back to top**](#selection-of-departure-times)
+</p>
