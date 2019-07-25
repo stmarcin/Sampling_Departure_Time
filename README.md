@@ -1,6 +1,16 @@
 # Selection of departure times
 
-Rscript to generate .dbf file with departure times for accessibility analyses with temporal resolution (e.g GTFS)
+Rscript to generate `.dbf` file with departure times for accessibility analyses with temporal resolution (e.g **GTFS**)
+
+___
+
+### Intro
+
+This script was inspired by [Owen & Murphy (2018)](https://trid.trb.org/view/1497217) study and was developed when working on [Stępniak et al. (2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
+
+Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The impact of temporal resolution on public transport accessibility measurement: review and case study in Poland*, Journal of Transport Geography.
+
+___
 
 ### Table of Contents
 [Intro](#intro)<br>
@@ -12,11 +22,7 @@ Rscript to generate .dbf file with departure times for accessibility analyses wi
 [Examples](#examples)<br>
 [Funding statement](#funding-statement)<br>
 
-### Intro
-
-This script was inspired by [Owen & Murphy (2018)](https://trid.trb.org/view/1497217) study and was developed when working on [Stępniak et al. (2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
-
-Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The impact of temporal resolution on public transport accessibility measurement: review and case study in Poland*, Journal of Transport Geography.
+___
 
 ### Description
 
@@ -34,11 +40,28 @@ Supported sampling methods (in version 1.0):
 + **Hybrid** sampling method: departure times are randomly selected from given time intervals (resulted from applied temporal resolution)
 + **Constrained Random Walk Sampling** sampling method: a first departure time is randomly selected from the subset of the length defined by the frequency and beginning of the time window; then, the next departure time is randomly selected from the subset limited by $Tn+f/2$ and $Tn+f+f/2$
 
+Examples (temporal resolution 20 minutes, time window 07:00 - 08:00)
+
+Sampling method | Departure times | Comments
+------------ | ------------- | -------------
+**Systematic** | 07:00; 07:20, 7:40, 08:00 | regular interval of 20 minutes<sup>1</sup>
+**Simple Random** | 07:18; 07:51; 07:55 | 3 randomly selected departure times from the time window<sup>2</sup>
+**Hybrid** | 07:02; 07:23; 07:50 | One randomly selected departure time from each time interval period<sup>3</sup>
+**Random Walk** | 07:15; 07:36; 07:49 | on average there should be 20-minute interval between departure times<sup>4</sup>
+
+
+<sup>1</sup>  as 20-minute interval fits to 60 minute time window it provides 4 departure times.   
+<sup>2</sup>  i.e. one per each 20 min. in 60-minute time window.  
+<sup>3</sup>  i.e. one from 07:00-07:19, one from 07:20-07:39 and one from 07:40-07:59.  
+<sup>4</sup>  due to the nature of the sampling procedure, the number of departure times might differ.
+
 For details please consult [Owen & Murphy (2018)](https://trid.trb.org/view/1497217).
+
+
 
 ### Dependencies
 
-+ `foreign` packaged needs to be installed (in order to save an output as dbf file).
++ `{foreign}` package needs to be installed (in order to save an output as dbf file).
 
 ### Function syntax
 
@@ -103,6 +126,8 @@ DepartureTime(method = "S",   # systematic sampling method
 
 
 
+___
+
 
 ### Funding statement
 
@@ -110,3 +135,6 @@ This document is created within the **MSCA CAlCULUS** project.
 
 *This project has received funding from the European Union's Horizon 2020 research and innovation Programme under the Marie Sklodowska-Curie Grant Agreement no. 749761.*  
 *The views and opinions expressed herein do not necessarily reflect those of the European Commission.*
+
+
+<div align="right">[**Back to top**](#selection-of-departure-times)</div>
