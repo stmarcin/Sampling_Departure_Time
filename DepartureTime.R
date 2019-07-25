@@ -72,32 +72,3 @@ DepartureTime <- function(method = "H",
   foreign::write.dbf(Temp, paste(path, paste0(file, ".dbf"), sep = "/"))
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
